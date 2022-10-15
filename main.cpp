@@ -2,7 +2,7 @@
 #include <string>
 #include "Plant.h"
 #include "Farm.h"
-#include "Player.h"
+#include "Person.h"
 #include "Supply.h"
 #include "Shop.h"
 
@@ -10,16 +10,22 @@ using namespace std;
 
 int main(){
   //create classes 
-  Plant ;
-  Plant ;
-  Plant ;
+  Person player(200, 3, 5) ;
+  Plant grape("grape", 10, 0);
+  Plant apple("apple", 5, 10);
   Farm f;
   f.printF();
   int endday;
   int day = 1;
   while(1){ //infinite while loop
     endday = 0;//not to trigger ENDDAY function
-
+    
+    if(day > 1){ //not to show this on day 1
+      //tell player number of ripe plants
+      int ripe_num = f.get_ripe_num();
+      cout << ripe_num << " plants ripe." << endl; 
+      cout << endl;
+    }
 
     string input;
     cout << "Select Actions: (Shop, Pick, Plant or ENDDAY)" << endl; //atcion choice for player
@@ -39,10 +45,7 @@ int main(){
     //identify actions
     switch(action){
       case 11:
-          //tell player number of ripe plants
-          int ripe_num = f.get_ripe_num();
-          cout << ripe_num << " plants ripe." << endl; 
-          cout << endl;
+          
           //player choose field to pick up
           int SlotNum;
           cout << "Which field do you want to pick? (type field number): ";
@@ -50,17 +53,23 @@ int main(){
 
           f.rem_plant(SlotNum); //pick plant
           f.printF(); //print out field at the end so player can view and select next step
-
+        
           break;
 
       case 100:
           day++;
-          ...//increase plant growth 
+          Plant::grow()//increase plant growth 
           cout << "------Day " << day << endl;
           break;
       
-      case ??:
-          ???
+      case 13:
+          int PlantName;
+          cout << "Which plant do you want to plant? (type grape or apple): ";
+          cin >> PlantName;
+          
+          if(input == "grape"){f.add_plant(grape);}
+          else if(input == "apple"){f.add_plant(apple);}
+          else{cout << "Not a valid plant." << endl;}
           break;
 
       case ??:
@@ -71,7 +80,11 @@ int main(){
           cout << "Not a valid actioin." << endl;
           break;
     }
-   ...//some status to exit game (infinit while loop)
+   if (day == 11) {//Exit game on day 11
+     cout << "Money you earned: " << player.get_money() << endl;
+     cout << "Game Finished." << endl; //???
+     break;
+   }
   }
-  cout << "Game Finished." << endl; //???
+  return 0;
 }
