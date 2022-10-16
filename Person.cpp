@@ -1,5 +1,9 @@
 #include <iostream>
 #include "Person.h"
+#include "Plant.h"
+#include "Supply.h"
+#include <string>
+
 
 using namespace std;
 //constructors for the person class
@@ -7,12 +11,16 @@ using namespace std;
 Person::Person(){
     money = 0;
     supplies = NULL;
+    supcount = 0;
     plants = NULL;
+    plcount = 0;
 }
-Person::Person(m, ssize, psize){
+Person::Person(int m, int ssize, int psize){
     money = m;
     supplies = new Supply[ssize];
+    supcount = 0;
     plants = new Plant[psize];
+    plcount = 0;
 }
 //function that returns the person's money
 
@@ -21,9 +29,9 @@ int Person::get_money(){
 }
 //functions that return the plant and supply arrays
 
-Plant* get_plants(){
+Plant* Person::get_plants(){
     return plants;
 }
-Supply* get_supplies(){
+Supply* Person::get_supplies(){
     return supplies;
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Plant.h"
 #include "Supply.h"
+#include <string>
 
 //the header file for the person abstract class. will be the parent class of the shop
 using namespace std;
@@ -13,7 +14,9 @@ protected:
 //has an int representing money and two class arrays to hold the plants and supplies
     int money;
     Supply* supplies;
+    int supcount;
     Plant* plants;
+    int plcount;
 
 public:
 //constructors for the person class
