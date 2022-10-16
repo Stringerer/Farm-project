@@ -7,7 +7,7 @@ using namespace std;
 Plant::Plant(){
     name = "Plant";
     price = 0;
-    growth = 0;
+    growth = -1; // (Jerrie)
 }
 //constructor with inputted values
 Plant::Plant(string n, int p, int g){
@@ -18,7 +18,7 @@ Plant::Plant(string n, int p, int g){
 //several functions to return values of the plant
 string Plant::getName(){
     if(growth == 0){
-        return name+"seed";
+        return name+"_seed"; // (Jerrie)
     }
     else{
         return name;
