@@ -28,8 +28,8 @@ public:
     Plant* get_plants();
     Supply* get_supplies();
 //virtual functions for buying and selling plants as this function will act differently in child classes
-    virtual void sell_plant(Plant pPlant) = 0;
-    virtual void buy_plant(Plant pPlant) = 0;
+    virtual void sell_plant(string Plant) = 0;
+    virtual void buy_plant(string Plant, int price) = 0;
 //deconstructor
     ~Person() {delete [] supplies; delete [] plants;}
 };

@@ -27,9 +27,11 @@ Shop::Shop(int m, int ssize, int psize){
 //functions that add items to shop
 void Shop::add_plant(Plant nplant){
     plants[plcount]=nplant;
+    plcount++;
 }
 void Shop::add_supply(Supply nsupply){
     supplies[supcount]=nsupply;
+    supcount++;
 }
 
 //buy/sell functions
@@ -37,7 +39,7 @@ void Shop::add_supply(Supply nsupply){
 void Shop::sell_plant(string plant){
     for(int i = 0; i < plcount; i++){
         if (plants[i].getName()==plant){
-            money = money + plants[i].getPrice;
+            money = money + plants[i].getPrice();
         }
     }
 }
@@ -47,7 +49,7 @@ void Shop::buy_plant(string plant, int price){
 void Shop::sell_supply(string supply){
     for(int i = 0; i < supcount; i++){
         if (supplies[i].getName()==supply){
-            money = money + supplies[i].getPrice;
+            money = money + supplies[i].getPrice();
         }
     }
 }
