@@ -1,9 +1,9 @@
-#ifndef _PERSON_H
-#define _PERSON_H
 #include <iostream>
+#include <string>
 #include "Plant.h"
 #include "Supply.h"
-#include <string>
+#ifndef _PERSON_H
+#define _PERSON_H
 
 //the header file for the person abstract class. will be the parent class of the shop
 using namespace std;
@@ -31,6 +31,6 @@ public:
     virtual void sell_plant(Plant pPlant) = 0;
     virtual void buy_plant(Plant pPlant) = 0;
 //deconstructor
-    ~Person(){if (supplies != nullptr) {delete[] ;}}{if (plants != nullptr) {delete[] ;}}
+    ~Person() {delete [] supplies; delete [] plants;}
 };
 #endif

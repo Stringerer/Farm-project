@@ -1,9 +1,11 @@
-#ifndef _SHOP_H
-#define _SHOP_H
 #include <iostream>
+#include <string>
 #include "Plant.h"
 #include "Supply.h"
-#include <string>
+#include "Person.h"
+#ifndef _SHOP_H
+#define _SHOP_H
+
 
 //header for shop object
 using namespace std;
@@ -21,6 +23,6 @@ public:
     void sell_supply(Supply sSupply);
     void buy_supply(Supply sSupply);
 //deconstructor
-    ~Shop(){if (supplies != nullptr) {delete[] ;}}{if (plants != nullptr) {delete[] ;}}
+    ~Shop(){delete [] supplies; delete [] plants;}
 };
 #endif

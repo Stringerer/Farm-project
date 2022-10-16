@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
-#include "Shop.h"
 #include "Plant.h"
 #include "Supply.h"
+#include "Person.h"
+#include "Shop.h"
 
 using namespace std;
 //base constructor for shop
