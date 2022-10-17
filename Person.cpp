@@ -50,11 +50,14 @@ int Person::get_money(){
 
 void Person::print_plants(){
     for (int i = 0; i < plcount; i++){
-        cout << "Name: "<<plants[i].getName() <<"  | Price: $" << plants[i].getPrice() << endl;
+        if (plants[i].getGrowth()!=-1){
+            cout << "Name: "<<plants[i].getName() <<"  | Price: $" << plants[i].getPrice() << endl;
+        }  
     }
 }
 void Person::print_supplies(){
     for (int i = 0; i < supcount; i++){
+
         cout << "Name: " <<supplies[i].getName() <<"  | Price: $" << supplies[i].getPrice() << endl;
     }
 }
