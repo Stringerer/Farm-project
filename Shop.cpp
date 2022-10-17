@@ -28,9 +28,9 @@ Shop::Shop(int m){
 
 //buy/sell functions
 //sell functions check to make sure the object is in shop before selling
-void Shop::sell_plant(string plant){
+void Shop::sell_plant(string plant, int growth){
     for(int i = 0; i < plcount; i++){
-        if (plants[i].getName()==plant){
+        if (plants[i].getName()==plant && plants[i].getGrowth == growth){
             money = money + plants[i].getPrice();
         }
     }

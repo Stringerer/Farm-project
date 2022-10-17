@@ -20,7 +20,7 @@ public:
     Player(int m);
     //function for watering plants check
     int water_plants();
-    void Psell_plant(string pPlant);
+    void Psell_plant(string pPlant, int growth);
     void Pbuy_plant(Plant pPlant);
     void Pbuy_supply(Supply sSupply);
 };

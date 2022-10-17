@@ -26,9 +26,9 @@ Player::int water_plants(){
     return 1;
 }
 //functions that are used to manage supplies and plants in the players inventory
-void Player::Psell_plant(string pPlant){
+void Player::Psell_plant(string pPlant, int growth){
     for (int i = 0; i < plcount; i++){
-        if (plants[i].getName()==pPlant){
+        if (plants[i].getName()==pPlant && plants[i].getGrowth == growth){
           plants[i].reset();  
         }
      }

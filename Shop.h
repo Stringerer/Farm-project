@@ -16,7 +16,7 @@ public:
 //unique functions such as constructer and exchanging items with player
     Shop();
     Shop(int m);
-    void sell_plant(string pPlant);
+    void sell_plant(string pPlant, int growth);
     void buy_plant(string pPlant, int price);
     void sell_supply(string sSupply);
     void buy_supply(string sSupply, int price);
