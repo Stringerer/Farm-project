@@ -10,29 +10,21 @@ using namespace std;
 
 Shop::Shop(){
     money = 0;
-    supplies = NULL;
+    supplies;
     supcount = 0;
-    plants = NULL;
+    plants;
     plcount = 0;
 }
-//constructor with values
+//constructor with inputted money
 
-Shop::Shop(int m, int ssize, int psize){
+Shop::Shop(int m){
     money = m;
-    supplies = new Supply[ssize];
+    supplies;
     supcount = 0;
-    plants = new Plant[psize];
+    plants;
     plcount = 0;
 }
-//functions that add items to shop
-void Shop::add_plant(Plant nplant){
-    plants[plcount]=nplant;
-    plcount++;
-}
-void Shop::add_supply(Supply nsupply){
-    supplies[supcount]=nsupply;
-    supcount++;
-}
+
 
 //buy/sell functions
 //sell functions check to make sure the object is in shop before selling

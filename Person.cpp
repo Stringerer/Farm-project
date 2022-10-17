@@ -1,8 +1,7 @@
 #include <iostream>
-#include "Person.h"
-#include "Plant.h"
-#include "Supply.h"
 #include <string>
+#include "Person.h"
+
 
 
 using namespace std;
@@ -10,28 +9,53 @@ using namespace std;
 
 Person::Person(){
     money = 0;
-    supplies = NULL;
+    supplies;
     supcount = 0;
-    plants = NULL;
+    plants;
     plcount = 0;
 }
-Person::Person(int m, int ssize, int psize){
+Person::Person(int m){
     money = m;
-    supplies = new Supply[ssize];
+    supplies;
     supcount = 0;
-    plants = new Plant[psize];
+    plants;
     plcount = 0;
 }
+//functions to add plants and supplies
+bool Person::add_plant(Plant newplant){
+    if (plcount < 10){
+        plants[plcount] = newplant;
+        plcount++;
+        return true;
+    }
+    return false;
+}
+
+bool Person::add_supply(Supply newsupply){
+    if (supcount < 10){
+        supplies[supcount] = newsupply;
+        supcount++;
+        return true;
+    }
+    return false;
+}
+
+
 //function that returns the person's money
 
 int Person::get_money(){
     return money;
 }
-//functions that return the plant and supply arrays
+//functions that print the plant and supply arrays
 
-Plant* Person::get_plants(){
-    return plants;
+void Person::print_plants(){
+    for (int i = 0; i < plcount; i++){
+        cout << "Name: "<<plants[i].getName() <<"  | Price: " << plants[i].getPrice() << endl;
+    }
 }
-Supply* Person::get_supplies(){
-    return supplies;
+void Person::print_supplies(){
+    for (int i = 0; i < supcount; i++){
+        cout << "Name: " <<supplies[i].getName() <<"  | Price: " << supplies[i].getPrice() << endl;
+    }
 }
+
