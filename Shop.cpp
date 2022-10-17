@@ -30,15 +30,16 @@ Shop::Shop(int m){
 //sell functions check to make sure the object is in shop before selling
 void Shop::sell_plant(string plant, int growth){
     for(int i = 0; i < plcount; i++){
-        if (plants[i].getName()==plant && plants[i].getGrowth == growth){
+        if (plants[i].getName()==plant && plants[i].getGrowth() == growth){
             money = money + plants[i].getPrice();
         }
     }
 }
 Plant Shop::return_plant_name(string plant){
     for(int i = 0; i < plcount; i++){
-        if (plants[i].getName()==Plant);
-        return plants[i];
+        if (plants[i].getName()==Plant){
+            return plants[i];
+        }
     }
 }
 void Shop::buy_plant(string plant, int price){
@@ -53,9 +54,11 @@ void Shop::sell_supply(string supply){
 }
 Supply Shop::return_supply_name(string supply){
     for(int i = 0; i < supcount; i++){
-        if (supplies[i].getName()==supply);
-        return supplies[i];
+        if (supplies[i].getName()==supply){
+            return supplies[i];
+        }
     }
+}
 void Shop::buy_supply(string supply, int price){
     money = money - price;
 }
