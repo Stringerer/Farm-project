@@ -21,5 +21,7 @@ class Plant{
         int getGrowth();
         //function that causes the plant to grow, increasing growth and price
         void grow();
+        //function that resets plant growth;
+        void reset();
 };
 #endif
