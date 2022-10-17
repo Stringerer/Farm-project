@@ -22,16 +22,18 @@ Player::Player(int m){
     plcount = 0;
 }
 //function that returns an int when the plants are watered
-Player::int water_plants(){
+int Player::water_plants(){
     return 1;
 }
 //functions that are used to manage supplies and plants in the players inventory
-void Player::Psell_plant(string pPlant, int growth){
+bool Player::Psell_plant(string pPlant, int growth){
     for (int i = 0; i < plcount; i++){
-        if (plants[i].getName()==pPlant && plants[i].getGrowth == growth){
-          plants[i].reset();  
+        if (plants[i].getName()==pPlant && plants[i].getGrowth() == growth){
+          plants[i].reset();
+          return true;
         }
      }
+    return false;
 }
 void Player::Pbuy_plant(Plant pPlant){
     plants[plcount]=pPlant;

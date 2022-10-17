@@ -18,7 +18,7 @@ Plant::Plant(string n, int p, int g){
 //several functions to return values of the plant
 string Plant::getName(){
     if(growth == 0){
-        return name+"seed";
+        return name+"_seed";
     }
     else{
         return name;
@@ -37,6 +37,7 @@ void Plant::grow(){
 }
 //function resets plant
 void Plant::reset(){
+    name = "Plant";
     price = price - growth;
     growth = -1;
 }

@@ -31,7 +31,7 @@ public:
     void print_plants();
     void print_supplies();
 //virtual functions for buying and selling plants as this function will act differently in child classes
-    virtual void sell_plant(string Plant) = 0;
+    virtual void sell_plant(string Plant,int growth) = 0;
     virtual void buy_plant(string Plant, int price) = 0;
 
 };

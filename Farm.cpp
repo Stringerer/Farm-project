@@ -24,7 +24,11 @@ void Farm::add_plant(Plant p)
 void Farm::rem_plant(int num)
 {
     Plant p;
-    if (plants[num].getGrowth() < 10)
+    if (plants[num].getGrowth() == -1)
+    {
+        cout << " no plant at field_" << num << endl;
+    }
+    else if (plants[num].getGrowth() < 10)
     {
         cout << plants[num].getName() << " is plucked out from field_" << num << endl;
         plants[num] = p;

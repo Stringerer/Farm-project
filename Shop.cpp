@@ -37,10 +37,12 @@ void Shop::sell_plant(string plant, int growth){
 }
 Plant Shop::return_plant_name(string plant){
     for(int i = 0; i < plcount; i++){
-        if (plants[i].getName()==Plant){
+        if (plants[i].getName()==plant){
             return plants[i];
         }
     }
+    Plant p;
+    return p;
 }
 void Shop::buy_plant(string plant, int price){
     money = money - price;
@@ -58,6 +60,8 @@ Supply Shop::return_supply_name(string supply){
             return supplies[i];
         }
     }
+    Supply s;
+    return s;
 }
 void Shop::buy_supply(string supply, int price){
     money = money - price;

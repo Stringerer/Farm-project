@@ -52,7 +52,7 @@ void Person::print_plants(){
     for (int i = 0; i < plcount; i++){
         if (plants[i].getGrowth()!=-1){
             cout << "Name: "<<plants[i].getName() <<"  | Price: $" << plants[i].getPrice() << endl;
-        }  
+        }
     }
 }
 void Person::print_supplies(){
@@ -61,4 +61,3 @@ void Person::print_supplies(){
         cout << "Name: " <<supplies[i].getName() <<"  | Price: $" << supplies[i].getPrice() << endl;
     }
 }
-

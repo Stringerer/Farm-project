@@ -18,11 +18,10 @@ public:
 //unique functions like constructors and exchanging items
     Player();
     Player(int m);
-    //function for watering plants check
-    int water_plants();
-    void Psell_plant(string pPlant, int growth);
+    bool Psell_plant(string pPlant, int growth);
     void Pbuy_plant(Plant pPlant);
     void Pbuy_supply(Supply sSupply);
+    int water_plants();
 };
 
 #endif
