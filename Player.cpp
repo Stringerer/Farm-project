@@ -21,6 +21,10 @@ Player::Player(int m){
     plants;
     plcount = 0;
 }
+//function that returns an int when the plants are watered
+Player::int water_plants(){
+    return 1;
+}
 //functions that are used to manage supplies and plants in the players inventory
 void Player::Psell_plant(string pPlant){
     for (int i = 0; i < plcount; i++){
