@@ -38,5 +38,5 @@ void Plant::grow(){
 //function resets plant
 void Plant::reset(){
     price = price - growth;
-    growth = 0;
+    growth = -1;
 }
