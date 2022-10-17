@@ -17,8 +17,10 @@ public:
     Shop();
     Shop(int m);
     void sell_plant(string pPlant, int growth);
+    Plant return_plant_name(string plant);
     void buy_plant(string pPlant, int price);
     void sell_supply(string sSupply);
+    Supply return_supply_name(string supply);
     void buy_supply(string sSupply, int price);
 };
 #endif
