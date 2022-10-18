@@ -41,7 +41,7 @@ void Farm::rem_plant(int num)
     }
 }
 
-Plant *Farm::return_plants() { return plants; }
+Plant Farm::return_plants(int num) { return plants[num]; }
 
 void Farm::printFarm()
 {
@@ -64,7 +64,11 @@ int Farm::getRipeNum()
 }
 
 void Farm::FramGrow(int num){
-    plants[i].grow();
+    plants[num].grow();
+}
+
+int Farm::FarmGetGrowth(int num){
+  return plants[num].getGrowth(); 
 }
 
 Farm::~Farm()
