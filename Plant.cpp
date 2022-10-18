@@ -18,11 +18,11 @@ Plant::Plant(string n, int p, int g){
 //several functions to return values of the plant
 string Plant::getName(){
     if(growth == 0){
-        return name+"_seed";
+        string seedname = name+"_seed";
+        return seedname;
     }
-    else{
-        return name;
-    }
+    return name;
+    
 }
 int Plant::getPrice(){
     return price;
