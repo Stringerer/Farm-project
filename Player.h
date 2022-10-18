@@ -21,6 +21,7 @@ public:
     bool Psell_plant(string pPlant, int growth);
     void Pbuy_plant(Plant pPlant);
     void Pbuy_supply(Supply sSupply);
+    bool Check_sup(string sup, int growth);
     int water_plants();
 };
 
