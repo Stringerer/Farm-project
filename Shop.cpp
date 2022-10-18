@@ -11,21 +11,35 @@ using namespace std;
 Shop::Shop(){
     money = 0;
     supplies;
-    supcount = 0;
+    supcount = 10;
     plants;
-    plcount = 0;
+    plcount = 10;
 }
 //constructor with inputted money
 
 Shop::Shop(int m){
     money = m;
     supplies;
-    supcount = 0;
+    supcount = 10;
     plants;
-    plcount = 0;
+    plcount = 10;
 }
 
+void Shop::add_plant(Plant pInfo){
+  int ifadded = 0;
+  for(int i = 0; i < this->plcount; i++){
+    if(plants[i].getGrowth() == -1){plants[i] = pInfo;ifadded = 1;}
+    if(ifadded == 1){break;}
+  }
+}
 
+void Shop::add_supply(Supply SInfo){
+  int ifadded = 0;
+  for(int i = 0; i < this->supcount; i++){
+    if(supplies[i].getGF() == 0){supplies[i] = SInfo;ifadded = 1;}
+    if(ifadded == 1){break;}
+  }
+}
 //buy/sell functions
 //sell functions check to make sure the object is in shop before selling
 void Shop::sell_plant(string plant, int growth){
