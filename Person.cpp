@@ -57,8 +57,8 @@ void Person::print_plants(){
 }
 void Person::print_supplies(){
     for (int i = 0; i < supcount; i++){
-
+      if (supplies[i].getGF()!=0){
         cout << "Name: " <<supplies[i].getName() <<"  | Price: $" << supplies[i].getPrice() << endl;
+      }
     }
 }
-
