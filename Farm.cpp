@@ -63,7 +63,7 @@ int Farm::getRipeNum()
     return sum;
 }
 
-void FramGrow(int num){
+void Farm::FramGrow(int num){
     plants[i].grow();
 }
 
