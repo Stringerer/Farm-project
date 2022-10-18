@@ -10,11 +10,11 @@ using namespace std;
 
 int main(){
   //create classes 
-  Person player(200, 3, 5) ;
+ // Person player = Person(200, 3, 5) ;
   Plant grape("grape", 10, 0);
   Plant apple("apple", 5, 10);
   Farm f;
-  f.printF();
+  f.printFarm();
   int endday;
   int day = 1;
   while(1){ //infinite while loop
@@ -22,7 +22,7 @@ int main(){
     
     if(day > 1){ //not to show this on day 1
       //tell player number of ripe plants
-      int ripe_num = f.get_ripe_num();
+      int ripe_num = f.getRipeNum();
       cout << ripe_num << " plants ripe." << endl; 
       cout << endl;
     }
@@ -39,49 +39,68 @@ int main(){
     else if(input == "ENDDAY"){action =100;}
     else if(input == "Shop"){action =12;}
     else if(input == "Plant"){action =13;}
-    else if(input == ????){action =???;}
+   // else if(input == ????){action =???;}
+    else if(input == "Finish"){action =888;}
     else{action = 999;}
 
     //identify actions
     switch(action){
       case 11:
-          
+          {
           //player choose field to pick up
           int SlotNum;
           cout << "Which field do you want to pick? (type field number): ";
           cin >> SlotNum;
 
           f.rem_plant(SlotNum); //pick plant
-          f.printF(); //print out field at the end so player can view and select next step
+          f.printFarm(); //print out field at the end so player can view and select next step
         
           break;
+          }
 
       case 100:
+          {
           day++;
-          Plant::grow()//increase plant growth 
+          //grow()//increase plant growth 
           cout << "------Day " << day << endl;
           break;
+          }
       
       case 13:
-          int PlantName;
+          {
+          string PlantName;
           cout << "Which plant do you want to plant? (type grape or apple): ";
           cin >> PlantName;
           
-          if(input == "grape"){f.add_plant(grape);}
-          else if(input == "apple"){f.add_plant(apple);}
+          if(PlantName == "grape"){
+            f.add_plant(grape); 
+          }
+          else if(PlantName == "apple"){
+            if( > 0){f.add_plant(apple);}
+              
+          }
           else{cout << "Not a valid plant." << endl;}
           break;
+          }
 
-      case ??:
-          ???
-          break;
+     // case ??:
+      //    ???
+      //   break;
 
       case 999:
+          {
           cout << "Not a valid actioin." << endl;
           break;
+          }
+
+      case 888:
+          {
+          day = 11;
+          break;
+          }          
     }
    if (day == 11) {//Exit game on day 11
-     cout << "Money you earned: " << player.get_money() << endl;
+     //cout << "Money you earned: " << player.get_money() << endl;
      cout << "Game Finished." << endl; //???
      break;
    }
