@@ -19,7 +19,7 @@ public:
     void rem_plant(int num); // in plan doc: void rem_plant(Plant p). I change argument to int (representing field num) because there can be mutiple apples planted at different time, and rem_plant(apple) doesn't specify which apple to remove
 
     // a function that returns plants array
-    Plant *return_plants();
+    Plant return_plants(int num);
 
     // a function that print what is in the farm
     void printFarm(); // not in plan doc
@@ -29,7 +29,10 @@ public:
     
     // a function to grow the plant 
     void FramGrow(int num);
-        
+
+    // a function to return growth factor of the plant 
+    int FarmGetGrowth(int num);
+
     // destructor for the Farm class
     ~Farm();
 
