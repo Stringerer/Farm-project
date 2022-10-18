@@ -15,48 +15,56 @@ int main(){
   Shop s(9999999); 
   Player p1(200);
   Plant potato("potato",5,0);
+  s.add_plant(potato);
   Plant apple("apple",8,0);
+  s.add_plant(apple);
   Plant melon("melon",10,0);
+  s.add_plant(melon);
   Plant grape("grape",15,0);
+  s.add_plant(grape);
   Supply hoe("hoe",50,2);
+  s.add_supply(hoe);
+
+  int Finish = 0;
   int endday;
   int day = 1;
   int water_check = 0;
-
-  f.printFarm();
+  int leave = 0;
 
   while(1){ //infinite while loop
+
     endday = 0;//not to trigger ENDDAY function
-    
-    if(day > 1){ //not to show this on day 1
+    if(day == 1){f.printFarm();}
+    if(day > 1 && Finish != 1){ //not to show this on day 1
       //tell player number of ripe plants
       int ripe_num = f.getRipeNum();
       cout << ripe_num << " plants ripe." << endl; 
       cout << endl;
     }
-
-    string Pinput;
-    cout << "Where to go?: (Shop, Farm, Invenory or ENDDAY) : "; //atcion choice for player
-    cin >> Pinput;
     
+    string Pinput;
+    cout << "Places to go:\n1.Shop\n2.Farm\n3.Inventory\n999.ENDDAY\n+++.Finish Game: ";
+    cout << endl; //atcion choice for player
+    cin >> Pinput;
+    system("clear");
     //set action ID to match switch state, can be defined to any nums, should match switch case
     int action;
 
-    if(Placeinput == "Farm"){action = 11;}
-    else if(Pinput == "Shop"){action =12;}
-    else if(Pinput == "Plant"){action =13;}
-    else if(Pinput == "Invenory"){action =14;}
-    else if(Pinput == "ENDDAY"){action =100;}
-    else if(input == "Finish"){action =888;}
+    if(Pinput == "2"){action = 11;}
+    else if(Pinput == "1"){action =12;}
+    else if(Pinput == "3"){action =14;}
+    else if(Pinput == "999"){action =100;}
+    else if(Pinput == "+++"){action =888;}
     else{action = 999;}
 
     //identify actions
     switch(action){
-      case 11: // Fram case
+      case 11:// Fram case
+          { 
           char Finput;
           string name;
           int num;
-          while (1){
+          while (leave == 0){
               f.printFarm();
               Finput = 'z';
               while (Finput != '1' && Finput != '2' && Finput != '3' && Finput != '4' && Finput != '5'){
@@ -66,7 +74,8 @@ int main(){
               }
               switch (Finput){
               case '1':
-                  return;
+                  leave = 1;
+                  break;
               case '2':
                   cout << "what seed would you like to plant (enter name): ";
                   cin >> name;
@@ -78,20 +87,25 @@ int main(){
                   else {cout << "failed: not in inventory!\n";}
                   break;
               case '3':
+                  f.printFarm();
                   cout << "what plant would you like to remove (enter field num 0-9): ";
                   cin >> num;
-                  if (0 <= num && num <= 9){f.rem_plant(num);}
+                  if (0 <= num && num <= 9){p1.Pbuy_plant(f.return_plants(num));f.rem_plant(num);}
                   else {cout << "failed: field num not valid!\n";}
                   break;
               case '4':
-                  water_check = p1.water_plants();
-                  cout << "all the plants in the farm is watered!\n";
+                  if (p1.Check_sup("hoe", 2) == true){
+                    water_check = p1.water_plants();
+                    cout << "all the plants in the farm is watered!\n";
+                  }
+                  else{cout << "failed: you need a hoe" << endl;}
                   break;
               case '5':
                   cout << "!!!Farm is a place to grow and cultivate plants!!!\n";
                   break;
               }
           }
+          leave = 0;
           break;
           }
 
@@ -102,7 +116,7 @@ int main(){
             int iGrowth;
             Plant temp;
             Supply sTemp;
-            while (true){
+            while (leave ==0){
                 s.get_money();
                 char Sinput = 'z';
                 while (Sinput != '1' && Sinput != '2' && Sinput != '3' && Sinput != '4' && Sinput != '5'){
@@ -112,7 +126,8 @@ int main(){
                 }
                 switch (Sinput){
                 case '1':
-                    return;
+                    leave = 1;
+                    break;
                 case '2':
                     s.print_plants();
                     cout << "what plant would you want to buy (enter name): ";
@@ -146,30 +161,15 @@ int main(){
                     s.sell_supply(name);
                     p1.buy_supply(name,sTemp.getPrice());p1.Pbuy_supply(sTemp);
                     break;
-                }
+                }   
             }
-          break;
-          }
-
-      case 13:
-          {
-          string PlantName;
-          cout << "Choose plant? (type grape or apple): ";
-          cin >> PlantName;
-          
-          if(PlantName == "grape"){
-            f.add_plant(grape); 
-          }
-          else if(PlantName == "apple"){
-            f.add_plant(apple);
-          }
-          else{cout << "Not a valid plant." << endl;}
-          break;
+            leave = 0;
+            break;
           }
 
       case 14:
-          {
-          while (true){
+          { 
+          while (leave == 0){
             cout << "you have: $" << p1.get_money() << endl;
             char input = 'z';
             cout << "INVENTORY\n1.close\n2.see plants\n3.see supplies\nenter 1-3: \n";
@@ -177,8 +177,9 @@ int main(){
             system("clear");
             switch (input){
             case '1':
+                leave = 1;
                 system("clear");
-                return;
+                break;
             case '2':
                 p1.print_plants();
                 break;
@@ -187,18 +188,21 @@ int main(){
                 break;
             }
           }
+          leave =0;
+          break;
           }
       case 100:
           {
-          Sting Plantname;
+          string Plantname;
           day++;
           if(water_check == 1){
             for(int i = 0;i < 10; i++){
-              if(f.getGrowth() != -1){f.FramGrow(i);}
+              if(f.FarmGetGrowth(i) != -1){f.FramGrow(i);}
             }
           }
           water_check = 0;
           cout << "------Day " << day << endl;
+          f.printFarm();
           break;
           }
       
@@ -210,16 +214,14 @@ int main(){
           }
 
       case 888:
-          {
-          day = 11;
+          
+          Finish = 1;
+          cout << "Money you earned: " << p1.get_money() << endl;
+          cout << "Game Finished." << endl; //???
           break;
-          }          
+                    
     }
-   if (day == 11) {//Exit game on day 11
-     cout << "Money you earned: " << p1.get_money() << endl;
-     cout << "Game Finished." << endl; //???
-     break;
-   }
+   if(Finish == 1)break;
   }
   return 0;
 }
