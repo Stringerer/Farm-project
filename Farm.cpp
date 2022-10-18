@@ -63,6 +63,10 @@ int Farm::getRipeNum()
     return sum;
 }
 
+void FramGrow(int num){
+    plants[i].grow();
+}
+
 Farm::~Farm()
 {
     cout << "destructor_Farm: delete[] plants\n";
