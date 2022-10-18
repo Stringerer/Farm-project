@@ -26,7 +26,10 @@ public:
 
     // a function that returns the num of ripe plants in farm (Yang)
     int getRipeNum(); // not in plan doc
-
+    
+    // a function to grow the plant 
+    void FramGrow(int num);
+        
     // destructor for the Farm class
     ~Farm();
 
