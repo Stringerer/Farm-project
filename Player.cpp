@@ -44,3 +44,14 @@ void Player::Pbuy_supply(Supply sSupply){
     supplies[supcount]=sSupply;
     supcount++;
 }
+
+bool Player::Check_sup(string sup, int growth){
+    int ifhave = 0;
+    for (int i = 0; i < supcount; i++){
+        if (supplies[i].getName()==sup){
+          return true;
+          ifhave = 1;
+        }
+    }
+    if(ifhave == 0){return false;}
+}
